@@ -59,7 +59,7 @@ class deck {
 //x is the index of the current value being assigned to the card.
 //x+2 is added to ensure that the value assigned to the card is correct
 //since we have two index (x and s), x + 2 is used instead of x + 1.
-                let War = new card(suits[s],values[x],x+2);
+                let War = new card(x+2,values[x],suits[s]);
                 console.log(War);
 //now, push the function which means add it to the class
                 deckOfCards.push(War);
@@ -100,7 +100,7 @@ function playGame(deck){
    console.log({player1});
    console.log({player2}); 
 //show your top card using alert
-alert(`player1 plays a ${player1.hand[0].face}; player2 plays a${player2.hand[0].face}`);
+//alert(`player1 plays a ${player1.hand[0].face}; player2 plays a${player2.hand[0].face}`);
 
 // create variables to store each player's current score
 let player1Score = 0;
@@ -113,10 +113,11 @@ const player1Card = player1.hand.shift();
 const player2Card = player2.hand.shift();
 
  // compare the values of the cards using an if loop
- if (player1Card.value > player2Card.value) {
+ if (player1Card.face > player2Card.face) {
 // player 1 wins the round
+console.log(`player 1 wins.${player1Card.face}`)
     player1Score++;
-  } else if (player1Card.value < player2Card.value) {
+  } else if (player1Card.face < player2Card.face) {
 // player 2 wins the round
     player2Score++;
   } else {
@@ -124,7 +125,7 @@ const player2Card = player2.hand.shift();
   }
 
 // log the results of the round
-  console.log(`Round ${round}: player1 plays a ${player1Card.face}, player2 plays a ${player2Card.face}`);
+  console.log(`Round ${round}: player1 plays a ${player1Card.value}, player2 plays a ${player2Card.value}`);
 
 // increment the round number
   round++;
